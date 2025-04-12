@@ -1,0 +1,72 @@
+[build-system]
+requires = [ "setuptools >= 61.0.0" ]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ecommerce"
+version = "0.1.0"
+description = "An e-commerce platform for online retail solutions"
+authors = [
+    { name = "Mdevpro78", email = "mdevpro.2020@gmail.com" }
+]
+license = { text = "BSD-3-Clause" }
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "License :: OSI Approved :: BSD License",
+  "Operating System :: OS Independent",
+]
+readme = "README.rst"
+requires-python = ">= 3.11.11"
+
+dependencies = [
+    "django>=5.2.0,<6.0.0",
+    "esbonio[docs]>=0.16.5",
+    "python-dotenv>=1.0.0",
+]
+
+# === PEP 621 Standard Optional Dependencies ===
+# https://peps.python.org/pep-0621/
+[project.optional-dependencies]
+# Testing tools and frameworks
+test = [
+    "tox>=4.24.2",
+    "pytest>=7.4.0",
+    "pytest-cov>=4.1.0",
+    "pytest-xdist>=3.3.1",
+]
+
+# Code quality and formatting tools
+lint = [
+    "pre-commit>=4.1.0",
+    "mypy>=1.15.0",
+    "ruff>=0.10.0",
+    "black>=25.1.0",
+    "validate-pyproject[all]>=0.24",
+    "pyupgrade>=3.19.1",
+    "add-trailing-comma>=3.1.0",
+    "uv-audit>=0.1.9",
+]
+
+# Documentation and build tools
+docs = []
+
+# Development environment - combines all extras for convenience
+dev = [
+    "ecommerce[test,docs,lint]",
+]
+
+# For compatibility with tools that don't support nested references
+# (e.g. `pip install -e .[dev]`)
+all = [ "ecommerce[dev]" ]
+
+
+[project.urls]
+homepage = "https://github.com/pytower/ecommerce"
+repository = "https://github.com/pytower/ecommerce"
+
+
+[tool.rye]
+managed = true
+virtual = true
