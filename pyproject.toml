@@ -1,0 +1,14 @@
+[project]
+name = "ecommerce"
+version = "0.1.0"
+description = "An e-commerce platform"
+authors = [
+    { name = "Mdevpro78", email = "mdevpro.2020@gmail.com" }
+]
+dependencies = []
+readme = "README.rst"
+requires-python = ">= 3.12.9"
+
+[tool.rye]
+managed = true
+virtual = true
