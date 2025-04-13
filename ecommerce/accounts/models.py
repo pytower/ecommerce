@@ -8,13 +8,16 @@ class User(AbstractBaseUser, PermissionsMixin):
     GENDER_CHOICES = [
         ('male', 'Male'),
         ('female', 'Female'),
+        ('diverse', 'Diverse'),
+        ('prefer_not_to_say', 'Prefer not to say'),
     ]
 
     phone = models.CharField(
         max_length=11,
         unique=True,
         validators=[
-            RegexValidator(regex=r'^09\d{9}$', message="شماره موبایل باید با 09 شروع شده و 11 رقم باشد.")
+            RegexValidator(regex=r'^09\d{9}$',
+                           message="Phone number must start with 09 and be 11 digits long.")
         ]
     )
     username = models.CharField(max_length=100, unique=True)
@@ -33,8 +36,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 
 
     def __str__(self):
-        return f"{self.phone} - {self.full_name or 'کاربر'}"
-
+        return f"{self.phone} - {self.full_name or 'User'}"
 
     class Meta:
         verbose_name = "User"
